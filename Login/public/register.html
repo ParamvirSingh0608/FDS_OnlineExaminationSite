@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - ExamPortal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/login.css">
+</head>
+<body>
+    <button id="themeToggle" class="theme-switch" aria-label="Toggle theme">🌙</button>
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-header"><h1>Register</h1><p>Join the portal</p></div>
+        <div class="role-toggle">
+            <button class="role-btn active" id="regStudentBtn">Student</button>
+            <button class="role-btn" id="regAdminBtn">Admin</button>
+        </div>
+        <form id="registerForm">
+            <div class="input-group"><input type="text" id="regName" placeholder="Full Name" required></div>
+            <div class="input-group"><input type="email" id="regEmail" placeholder="Email Address" required></div>
+            <div class="input-group"><input type="password" id="regPassword" placeholder="Password" required></div>
+            <div class="input-group"><input type="password" id="regConfirmPassword" placeholder="Confirm Password" required></div>
+            <button type="submit" class="btn full">Sign Up</button>
+        </form>
+        <p class="extra">Already registered? <a href="index.html">Login</a></p>
+    </div>
+</div>
+<script src="JS/theme.js"></script>
+<script src="JS/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+.exam-container { max-width: 850px; margin: 50px auto; padding: 0 20px; }
+.exam-header { display: flex; justify-content: space-between; align-items: center; background: white; padding: 25px; border-radius: 15px; margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+.timer-box { background: #ff4d4d; color: white; padding: 12px 25px; border-radius: 10px; font-weight: 700; font-size: 1.3rem; }
+.exam-body { background: white; padding: 45px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+.option-label { display: block; padding: 18px; border: 2px solid #f0f0f0; border-radius: 10px; margin-bottom: 15px; cursor: pointer; transition: 0.2s; }
+.option-label.selected { border-color: #5a4fcf; background: #5a4fcf; color: white; }
+.option-label input { display: none; }

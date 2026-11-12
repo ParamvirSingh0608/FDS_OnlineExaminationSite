@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - ExamPortal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/login.css">
+</head>
+<body>
+    <button id="themeToggle" class="theme-switch" aria-label="Toggle theme">🌙</button>
+
+    <div class="login-grid">
+        <!-- Left Banner (Split Screen) -->
+        <div class="welcome-panel">
+            <h1>Welcome Back</h1>
+            <p>Access your dashboard to continue your learning and examination journey.</p>
+        </div>
+
+        <!-- Right Login Interface -->
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <h2>ExamPortal</h2>
+                    <p>Login to continue</p>
+                </div>
+                
+                <div class="role-toggle">
+                    <button class="role-btn active" id="studentBtn">Student</button>
+                    <button class="role-btn" id="adminBtn">Admin</button>
+                </div>
+                
+                <form id="loginForm">
+                    <div class="input-group">
+                        <span class="input-icon">✉️</span>
+                        <input type="email" id="email" placeholder="Email Address" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <span class="input-icon">🔒</span>
+                        <input type="password" id="password" placeholder="Password" required>
+                    </div>
+                    
+                    <div class="forgot-link-row">
+                        <a href="forgot-password.html" class="forgot-link">Forgot Password?</a>
+                    </div>
+
+                    <p id="error-message" style="color: #ff4d4d; display: none; margin-bottom: 15px; font-size: 0.9rem; font-weight: 600;"></p>
+                    
+                    <button type="submit" class="btn full">Sign In</button>
+                </form>
+                
+                <p class="extra">New here? <a href="register.html">Create an Account</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="JS/theme.js"></script>
+    <script src="JS/login.js"></script>
+</body>
+</html>

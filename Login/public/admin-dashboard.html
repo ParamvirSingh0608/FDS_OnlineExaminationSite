@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/dashboard.css">
+</head>
+<body>
+    <button id="themeToggle" class="theme-switch" aria-label="Toggle theme">🌙</button>
+<div class="dashboard-container">
+    <aside class="sidebar">
+        <a href="index.html" class="logo">ExamPortal</a>
+        <ul class="sidebar-links">
+            <li id="navDashboard" class="active">Dashboard</li>
+            <li id="navManageExams">Manage Exams</li>
+            <li id="navManageQuestions">Manage Questions</li>
+            <li id="navViewResults">View Results</li>
+            <li id="navAdminQueries">Student Queries</li>
+            <li id="logoutBtn" style="cursor: pointer; color: #ff4d4d; margin-top: auto;">Logout</li>
+        </ul>
+    </aside>
+    <main class="main-content">
+        <header class="dashboard-header"><h1>Admin Dashboard</h1><p>System Management</p></header>
+        <section id="dashboardOverview" class="exam-list">
+            <div class="exam-card"><h3>Create Exam</h3><button class="btn" id="showCreateExamBtn">Open</button></div>
+            <div class="exam-card"><h3>Add Questions</h3><button class="btn" id="showQuestionFormBtn">Open</button></div>
+        </section>
+        <section id="manageExamsSection" style="display: none;"><h2>Created Exams</h2><div id="examListAdmin"></div></section>
+        <section id="manageQuestionsSection" style="display: none;"><h2>Question Bank</h2><div id="questionListAdmin"></div></section>
+        <section id="viewResultsSection" style="display: none;">
+            <div class="card" style="margin-bottom: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div><canvas id="adminBarChart"></canvas></div>
+                <div><canvas id="adminPieChart"></canvas></div>
+            </div>
+            <div class="card">
+                <h2>All Student Results</h2>
+                <table style="width:100%; border-collapse:collapse; margin-top:20px;">
+                    <thead><tr style="background:#5a4fcf; color:white; text-align:left;"><th style="padding:15px;">Student</th><th style="padding:15px;">Exam</th><th style="padding:15px;">Score</th><th style="padding:15px;">Date</th></tr></thead>
+                    <tbody id="allResultsAdmin"></tbody>
+                </table>
+            </div>
+        </section>
+        <section id="adminQueriesSection" style="display: none;"><h2>Handle Queries</h2><div id="adminQueriesList"></div></section>
+        <section id="createExamSection" class="form-section" style="display: none;">
+            <div class="card">
+                <form id="createExamForm">
+                    <input type="text" id="newExamName" placeholder="Exam Name" required style="width:100%; padding:10px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;">
+                    <input type="number" id="examDuration" placeholder="Duration (Min)" required style="width:100%; padding:10px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;">
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:15px;">
+                        <input type="number" id="examPassingPct" placeholder="Passing %" min="1" max="100" value="35" required style="width:100%; padding:10px; border-radius:8px; border:1px solid #ddd;">
+                        <span style="white-space:nowrap; font-size:0.9rem; color:#888;">Default: 35%</span>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:5px; margin-bottom:15px;">
+                        <label for="examActivationTime" style="font-size:0.9rem; font-weight:600;">Activation Time (Optional)</label>
+                        <input type="datetime-local" id="examActivationTime" style="width:100%; padding:10px; border-radius:8px; border:1px solid #ddd;">
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:5px; margin-bottom:15px;">
+                        <label for="examClosingTime" style="font-size:0.9rem; font-weight:600;">Closing Time (Optional)</label>
+                        <input type="datetime-local" id="examClosingTime" style="width:100%; padding:10px; border-radius:8px; border:1px solid #ddd;">
+                    </div>
+                    <button type="submit" class="btn full">Create</button>
+                </form>
+            </div>
+        </section>
+        <section id="addQuestionSection" class="form-section" style="display: none;">
+            <div class="card">
+                <form id="addQuestionForm">
+                    <input type="text" id="examName" placeholder="Exam Name" required style="width:100%; padding:10px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;">
+                    <textarea id="questionText" placeholder="Question" required style="width:100%; padding:10px; margin-bottom:10px; border-radius:8px; border:1px solid #ddd;"></textarea>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;"><input type="text" id="optionA" placeholder="A"><input type="text" id="optionB" placeholder="B"><input type="text" id="optionC" placeholder="C"><input type="text" id="optionD" placeholder="D"></div>
+                    <select id="correctAnswer" style="width:100%; padding:10px; margin-top:10px;"><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select>
+                    <button type="submit" class="btn full" style="margin-top:15px;">Save</button>
+                </form>
+            </div>
+        </section>
+    </main>
+</div>
+
+<!-- Live Chat Widget -->
+<div id="chatWidget" class="chat-widget">
+    <div class="chat-header" id="chatHeader">Admin Live Support 💬</div>
+    <div class="chat-body" id="chatBody" style="display:none;">
+        <div id="chatMessages" class="chat-messages"></div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Type a message...">
+            <button id="sendChatBtn" class="btn">Send</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="JS/theme.js"></script>
+<script src="JS/admin.js"></script>
+</body>
+</html>

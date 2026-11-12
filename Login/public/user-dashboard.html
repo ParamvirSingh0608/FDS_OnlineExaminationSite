@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/dashboard.css">
+</head>
+<body>
+    <button id="themeToggle" class="theme-switch" aria-label="Toggle theme">🌙</button>
+<div class="dashboard-container">
+    <aside class="sidebar">
+        <a href="index.html" class="logo">ExamPortal</a>
+        <ul class="sidebar-links">
+            <li id="navDashboard" class="active">Dashboard</li>
+            <li id="navResults">My Results</li>
+            <li id="navQueries">Support Queries</li>
+            <li id="logoutBtn" style="cursor: pointer; color: #ff4d4d; margin-top: auto;">Logout</li>
+        </ul>
+    </aside>
+    <main class="main-content">
+        <header class="dashboard-header"><h1 id="welcomeMessage">Welcome 👋</h1><p>Online Examination System</p></header>
+        <section id="dashboardOverview" class="exam-list"></section>
+        <section id="resultsSection" style="display: none;">
+            <h2>My Past Results</h2>
+            <div class="card" style="margin-bottom: 20px;">
+                <canvas id="studentProgressChart"></canvas>
+            </div>
+            <div id="myResultsList"></div>
+        </section>
+        <section id="queriesSection" style="display: none;">
+            <div class="card">
+                <h2>Submit a Query</h2>
+                <textarea id="queryInput" placeholder="Describe your issue..." style="width:100%; padding:15px; border-radius:10px; margin:15px 0; height:100px; border:1px solid #ddd;"></textarea>
+                <button class="btn" id="submitQueryBtn">Send Query</button>
+            </div>
+            <div id="myQueriesList" style="margin-top:30px;"><h2>My Query History</h2></div>
+        </section>
+    </main>
+</div>
+
+<!-- Live Chat Widget -->
+<div id="chatWidget" class="chat-widget">
+    <div class="chat-header" id="chatHeader">Live Support 💬</div>
+    <div class="chat-body" id="chatBody" style="display:none;">
+        <div id="chatMessages" class="chat-messages"></div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Type a message...">
+            <button id="sendChatBtn" class="btn">Send</button>
+        </div>
+    </div>
+</div>
+
+<!-- AI Chatbot Widget -->
+<div id="aiChatWidget" class="ai-chat-widget">
+    <div class="ai-chat-header" id="aiChatHeader">AI Tutor 🤖</div>
+    <div class="chat-body" id="aiChatBody" style="display:none;">
+        <div id="aiChatMessages" class="chat-messages">
+            <div class="message ai-received"><span class="message-sender">AI Tutor</span>Hello! I'm your AI assistant. How can I help you with your exams today?</div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="aiChatInput" placeholder="Ask me anything...">
+            <button id="sendAiChatBtn" class="btn" style="background:#11998e;">Ask</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="JS/theme.js"></script>
+<script src="JS/student.js"></script>
+</body>
+</html>
