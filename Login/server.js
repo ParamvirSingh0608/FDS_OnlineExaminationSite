@@ -43,7 +43,7 @@ function generateToken() {
     return crypto.randomBytes(32).toString('hex');
 }
 
-const mongoURI = 'mongodb://paramvir:param123@ac-g2d2smo-shard-00-00.zmwkdk2.mongodb.net:27017,ac-g2d2smo-shard-00-01.zmwkdk2.mongodb.net:27017,ac-g2d2smo-shard-00-02.zmwkdk2.mongodb.net:27017/exam_system?ssl=true&replicaSet=atlas-39fo1q-shard-0&authSource=admin&appName=Cluster0';
+const mongoURI = process.env.MONGO_URI;
 
 mongoose.connect(mongoURI)
     .then(() => console.log('MongoDB Connected...'))
