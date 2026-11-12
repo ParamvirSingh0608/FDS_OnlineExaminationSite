@@ -159,11 +159,3 @@ FDS_OnlineExaminationSite/
 * Persist live chat history in MongoDB and add mobile-responsive layouts.
 
 ---
-
-## 👥 Team & Academic Credits
-
-Submitted in partial fulfillment for the degree of **Bachelor of Engineering in Computer Science Engineering** at **Chandigarh University** (April 2026):
-
-* **Manish Sharma** (`24BCS11314`)
-* **Paramvir Singh** (`24BCS11328`)
-* **Yogesh** (`24BCS11325`)
